@@ -39,6 +39,8 @@ module.exports = function register(grunt) {
                   "--nolib",
                   "--target",
                   options.targetES5 ? "ES5" : "ES3", !!options.moduleKind ? "--module" : "", !!options.moduleKind ? options.moduleKind : "",
+                  "--jsx",
+                  "react",
                   libPath,
                   tsdPath,
                   fileName
