@@ -82,7 +82,7 @@ module.exports = function register(grunt) {
                     grunt.log.ok("React Template Converted: " + item);
                 } catch (templateError) {
                     grunt.log.error("React Template Conversion Error: " + scaffoldFile + "\r\n");
-                    grunt.log.errorlns(scaffoldCreationError);
+                    grunt.log.errorlns(templateError.message);
                     return
                 }
 
