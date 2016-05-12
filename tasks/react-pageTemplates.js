@@ -110,7 +110,7 @@ module.exports = function register(grunt) {
                         grunt.log.ok("Scaffold File Created: " + scaffoldFile);
                     } catch (scaffoldCreationError) {
                         grunt.log.error("Scaffold File Creation Error: " + scaffoldFile + "\r\n");
-                        grunt.log.errorlns(scaffoldCreationError);
+                        grunt.log.errorlns(scaffoldCreationError.message);
                     }
 
                 }
@@ -126,7 +126,7 @@ module.exports = function register(grunt) {
                 }
                 catch (scaffoldError) {
                     grunt.log.error("Scaffold File Error: " + scaffoldFile + "\r\n");
-                    grunt.log.errorlns(scaffoldError);
+                    grunt.log.errorlns(scaffoldError.message);
                 }
             });
 
