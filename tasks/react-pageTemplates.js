@@ -92,7 +92,7 @@ module.exports = function register(grunt) {
 
                 var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.tsx'));
 
-                if (!grunt.file.exists(scaffoldFile) || true) {
+                if (!grunt.file.exists(scaffoldFile)) {
 
                     /// Generate Scaffolding File
                     try {
