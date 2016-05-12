@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 module.exports = function register(grunt) {
     grunt.registerMultiTask('reactPageTemplates', function () {
         try {
