@@ -51,7 +51,7 @@ grunt.initConfig({
 for more options, see the [react-templates cli docs](https://github.com/wix/react-templates/blob/gh-pages/docs/cli.md).
 
 ## License
-Copyright (c) 2014 Wix. Licensed under the MIT license.
+Copyright (c) 2016 Rogassi Enterprises. Licensed under the MIT license.
 
 [npm-image]: https://img.shields.io/npm/v/grunt-react-pageTemplates.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/grunt-react-pageTemplates
