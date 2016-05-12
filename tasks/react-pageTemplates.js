@@ -86,15 +86,15 @@ module.exports = function register(grunt) {
                     return
                 }
 
-                grunt.file.write(path.resolve(pathInfo.dir + '/' + pathInfo.name + '.ts'), tsTemplate, { encoding: 'utf8' });
+                grunt.file.write(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '-rt') + '.ts'), tsTemplate, { encoding: 'utf8' });
 
                 var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.tsx'));
 
-                if (!grunt.file.exists(scaffoldFile)) {
+                if (!grunt.file.exists(scaffoldFile) || true) {
 
                     /// Generate Scaffolding File
                     try {
-                        grunt.file.write(scaffoldFile, "import * as _template from './" + pathInfo.name + "';\r\n" +
+                        grunt.file.write(scaffoldFile, "import * as _template from './" + pathInfo.name.replace(/.rt/ig, '-rt') + "';\r\n" +
     "import * as _ from 'lodash';\r\n" +
                         "import * as React from 'react';\r\n" +
                         "import * as ReactDOM from 'react-dom';\r\n" +
