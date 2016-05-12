@@ -53,11 +53,11 @@ for more options, see the [react-templates cli docs](https://github.com/wix/reac
 ## License
 Copyright (c) 2016 Rogassi Enterprises. Licensed under the MIT license.
 
-[npm-image]: https://img.shields.io/npm/v/grunt-react-pageTemplates.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/grunt-react-pageTemplates
-[travis-image]: https://img.shields.io/travis/wix/grunt-react-pageTemplates/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/wix/grunt-react-pageTemplates
-[coveralls-image]: https://img.shields.io/coveralls/wix/grunt-react-pageTemplates/master.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/wix/grunt-react-pageTemplates?branch=master
-[downloads-image]: http://img.shields.io/npm/dm/grunt-react-pageTemplates.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/grunt-react-pageTemplates
+[npm-image]: https://img.shields.io/npm/v/grunt-react-page-templates.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/grunt-react-page-templates
+[travis-image]: https://img.shields.io/travis/wix/grunt-react-page-templates/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/wix/grunt-react-page-templates
+[coveralls-image]: https://img.shields.io/coveralls/wix/grunt-react-page-templates/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/wix/grunt-react-page-templates?branch=master
+[downloads-image]: http://img.shields.io/npm/dm/grunt-react-page-templates.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/grunt-react-page-templates
