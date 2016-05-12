@@ -45,7 +45,7 @@ module.exports = function register(grunt) {
                 ];
 
                 var proc = merge(merge({}, process), {
-                    argv: compact(argv),
+                    argv: argv,
                     exit: function (code) {
                         if (code !== 0 && options.exitOnError) {
                             console.error('Fatal Error. Unable to compile TypeScript file. Exiting.');
