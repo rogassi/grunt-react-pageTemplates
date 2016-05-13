@@ -105,8 +105,9 @@ module.exports = function register(grunt) {
                         "    constructor(props) {\r\n" +
                         "        super(props);\r\n" +
                         "    }\r\n" +
-                        "    public render() { return _template(); }\r\n" +
+                        //"    public render() { return _template(); }\r\n" +
                         "}\r\n" +
+                        "template.prototype.render = _template;\r\n" +
                         "export = template;"
                         , { encoding: 'utf8' });
                         grunt.log.ok("Scaffold File Created: " + scaffoldFile);
