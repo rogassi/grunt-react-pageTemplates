@@ -157,10 +157,10 @@ module.exports = function register(grunt) {
                         "    var view = new keystone.View(req, res);\r\n" +
                         "    var locals = res.locals;\r\n" +
                         "\r\n" +
-                        "    locals.section = '" + (folderInfo == "/" ? "" : folderInfo.substr(1) + "/" + pathInfo.name.replace(/.rt/ig, '')) + "';\r\n" +
+                        "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rt/ig, '') + "';\r\n" +
                         "\r\n" +
                         "    // Render the view\r\n" +
-                        "    view.render('" + (folderInfo == "/" ? "" : folderInfo.substr(1) + "/" + pathInfo.name.replace(/.rt/ig, '')) + "');\r\n" +
+                        "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rt/ig, '') + "');\r\n" +
                         "}\r\n", { encoding: 'utf8' });
 
                             // JS VERSION 
