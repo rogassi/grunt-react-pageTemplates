@@ -10,6 +10,12 @@ module.exports = function register(grunt) {
             var vm = require('vm');
             var path = require('path');
 
+            var generateKeystoneRoutes = false;
+
+            if (rtOptions.generateKeystoneRoutes != null && rtOptions.generateKeystoneRoutes) {
+                generateKeystoneRoutes = true;
+            }
+
             var tsc = path.join(path.dirname(require.resolve("typescript")), "tsc.js");
             var tscScript = vm.createScript(fs.readFileSync(tsc, "utf8"), tsc);
             var libPath = path.join(path.dirname(require.resolve("typescript")), "lib.d.ts")
@@ -121,11 +127,59 @@ module.exports = function register(grunt) {
             })
 
             files.forEach(function (item, pos, ar) {
+
                 var pathInfo = path.parse(item);
+
+                var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '\\..\\..\\..\\client\\public'), '');
+
+                var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates' + folderInfo);
+                var routeFolder = path.resolve(__dirname + '../../../../client/keystone/routes' + folderInfo);
+
+                var routeFile = path.resolve(routeFolder + '/' + pathInfo.name.replace(/.rt/ig, '.ts'));
+
                 var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.tsx'));
                 try {
                     compileTS(scaffoldFile);
                     grunt.log.ok("Scaffold File Compiled: " + scaffoldFile);
+
+                    if (generateKeystoneRoutes) {
+
+                        grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.rt/ig, '.js')), {});
+                        grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '-rt.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.rt/ig, '-rt.js')), {});
+
+                        if (!grunt.file.exists(routeFile)) {
+
+                            grunt.file.write(routeFile,
+                            /// TS VERSION
+                        "import keystone = require('keystone');\r\n" +
+                        "export = function (req, res) {\r\n" +
+                        "\r\n" +
+                        "    var view = new keystone.View(req, res);\r\n" +
+                        "    var locals = res.locals;\r\n" +
+                        "\r\n" +
+                        "    // locals.section = 'home';\r\n" +
+                        "\r\n" +
+                        "    // Render the view\r\n" +
+                        "    view.render('" + pathInfo.name.replace(/.rt/ig, '') + "');\r\n" +
+                        "}\r\n", { encoding: 'utf8' });
+
+                            // JS VERSION 
+                            //"var keystone = require('keystone');\r\n" +
+                            //"\r\n" +
+                            //"exports = module.exports = function (req, res) {\r\n" +
+                            //"\r\n" +
+                            //"    var view = new keystone.View(req, res);\r\n" +
+                            //"    var locals = res.locals;\r\n" +
+                            //"\r\n" +
+                            //"    // Render the view\r\n" +
+                            //"    view.render('" + pathInfo.name.replace(/.rt/ig, '') + "');\r\n" +
+                            //"};\r\n", { encoding: 'utf8' });
+
+                        }
+
+                        compileTS(routeFile);
+
+                    }
                 }
                 catch (scaffoldError) {
                     grunt.log.error("Scaffold File Error: " + scaffoldFile + "\r\n");
