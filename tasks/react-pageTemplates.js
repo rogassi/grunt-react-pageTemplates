@@ -132,8 +132,8 @@ module.exports = function register(grunt) {
 
                 var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '\\..\\..\\..\\client\\public'), '');
 
-                var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates' + folderInfo);
-                var routeFolder = path.resolve(__dirname + '../../../../client/keystone/routes' + folderInfo);
+                var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates/views' + folderInfo);
+                var routeFolder = path.resolve(__dirname + '../../../../client/keystone/routes/views' + folderInfo);
 
                 var routeFile = path.resolve(routeFolder + '/' + pathInfo.name.replace(/.rt/ig, '.ts'));
 
