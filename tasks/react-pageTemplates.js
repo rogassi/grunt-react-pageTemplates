@@ -156,6 +156,8 @@ module.exports = function register(grunt) {
                         "\r\n" +
                         "    var view = new keystone.View(req, res);\r\n" +
                         "    var locals = res.locals;\r\n" +
+                        "    locals.req = req;\r\n" +
+                        "    locals.res = res;\r\n" +
                         "\r\n" +
                         "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rt/ig, '') + "';\r\n" +
                         "\r\n" +
