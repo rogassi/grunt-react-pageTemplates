@@ -209,7 +209,7 @@ module.exports = function register(grunt) {
                     }
 
                     if (generateKeystoneRoutes) {
-                        grunt.file.copy(item.replace(/.tsx/ig, '.js'), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.tsx/ig, '.js')), {});
+                        grunt.file.copy(item.replace(/.tsx/ig, '.js'), path.resolve(templateFolder + '/' + pathInfo.name + '.js'), {});
                     }
 
                 }
