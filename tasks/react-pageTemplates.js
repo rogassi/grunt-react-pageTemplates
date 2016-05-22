@@ -85,7 +85,7 @@ module.exports = function register(grunt) {
 
                 var pathInfo = path.parse(item);
 
-                if (pathInfo.ext == ".rt") {
+                if (pathInfo.ext == ".html") {
 
                     try {
                         var templateContent = grunt.file.read(item, { encoding: 'utf8' });
@@ -134,7 +134,7 @@ module.exports = function register(grunt) {
 
                 var pathInfo = path.parse(item);
 
-                if (pathInfo.ext == ".rt") {
+                if (pathInfo.ext == ".html") {
 
                     var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '\\..\\..\\..\\client\\public'), '');
 
