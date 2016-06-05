@@ -36,7 +36,7 @@ In your project's Gruntfile, add a section named `reactPageTemplates` to the dat
 
 ```js
 grunt.initConfig({
-  reactTemplates: {
+  reactPageTemplates: {
     dist: {
       src: ['**/*.rt'] //glob patterns of files to be processed
       options: {
