@@ -19,7 +19,7 @@ module.exports = function register(grunt) {
             var tsc = path.join(path.dirname(require.resolve("typescript")), "tsc.js");
             var tscScript = vm.createScript(fs.readFileSync(tsc, "utf8"), tsc);
             var libPath = path.join(path.dirname(require.resolve("typescript")), "lib.d.ts")
-            var tsdPath = path.resolve(__dirname + '\\..\\..\\..\\client\\typings\\tsd.d.ts');
+            var tsdPath = path.resolve(__dirname + '/../../../client/typings/tsd.d.ts');
 
             var options = {
                 nodeLib: false,
@@ -136,7 +136,7 @@ module.exports = function register(grunt) {
 
                 if (pathInfo.ext == ".html") {
 
-                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '\\..\\..\\..\\client\\public'), '');
+                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '/../../../client/public'), '');
 
                     var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates/views' + folderInfo);
                     var routeFolder = path.resolve(__dirname + '../../../../client/keystone/routes/views' + folderInfo);
@@ -196,7 +196,7 @@ module.exports = function register(grunt) {
                 }
                 else if (pathInfo.ext == ".tsx") {
 
-                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '\\..\\..\\..\\client\\public'), '');
+                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '/../../../client/public'), '');
                     var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates/views' + folderInfo);
 
                     try {
