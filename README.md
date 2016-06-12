@@ -3,6 +3,8 @@
 
 # grunt-react-pageTemplates
 
+This project is an extension of react-Templates for use as a full page templating language using react as it's foundation
+
 > [React Templates](https://github.com/wix/react-templates) grunt task
 
 ## Getting Started
@@ -36,7 +38,7 @@ In your project's Gruntfile, add a section named `reactPageTemplates` to the dat
 
 ```js
 grunt.initConfig({
-  reactTemplates: {
+  reactPageTemplates: {
     dist: {
       src: ['**/*.rt'] //glob patterns of files to be processed
       options: {
