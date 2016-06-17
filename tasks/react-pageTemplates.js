@@ -111,8 +111,8 @@ module.exports = function register(grunt) {
                     if (buildIso)
                         grunt.file.write(path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/.rti/ig, '-rt').replace(/.rt/ig, '-rt') + '.ts'), tsTemplate, { encoding: 'utf8' });
 
-                    var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.tsx'));
-                    var clientScaffoldFile = path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/.rt/ig, '.tsx'));
+                    var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rti/ig, '.tsx').replace(/.rt/ig, '.tsx'));
+                    var clientScaffoldFile = path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/.rti/ig, '.tsx').replace(/.rt/ig, '.tsx'));
 
                     var sf = "import * as _template from './" + pathInfo.name.replace(/.rti/ig, '-rt').replace(/.rt/ig, '-rt') + "';\r\n" +
         "import * as _ from 'lodash';\r\n" +
