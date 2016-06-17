@@ -175,9 +175,9 @@ module.exports = function register(grunt) {
                     var routeFolder = path.resolve(__dirname + '../../../../client/keystone/routes/views' + folderInfo);
                     //var clientJSFolder = path.resolve(__dirname + '../../../../client/public/js' + folderInfo);
 
-                    var routeFile = path.resolve(routeFolder + '/' + pathInfo.name.replace(/.rt/ig, '.ts'));
+                    var routeFile = path.resolve(routeFolder + '/' + pathInfo.name.replace(/.rti/ig, '.tsx').replace(/.rt/ig, '.ts'));
 
-                    var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.tsx'));
+                    var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rti/ig, '.tsx').replace(/.rt/ig, '.tsx'));
 
                     try {
                         compileTS(scaffoldFile);
@@ -185,8 +185,8 @@ module.exports = function register(grunt) {
 
                         if (generateKeystoneRoutes) {
 
-                            grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.rt/ig, '.js')), {});
-                            grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '-rt.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.rt/ig, '-rt.js')), {});
+                            grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.rti/ig, '.js').replace(/.rt/ig, '.js')), {});
+                            grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rt/ig, '-rt.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/.rti/ig, '-rt.js').replace(/.rt/ig, '-rt.js')), {});
 
                             //if (buildIso) {
 
@@ -209,10 +209,10 @@ module.exports = function register(grunt) {
                             "    locals.req = req;\r\n" +
                             "    locals.res = res;\r\n" +
                             "\r\n" +
-                            "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rt/ig, '') + "';\r\n" +
+                            "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rti/ig, '').replace(/.rt/ig, '') + "';\r\n" +
                             "\r\n" +
                             "    // Render the view\r\n" +
-                            "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rt/ig, '') + "');\r\n" +
+                            "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/.rti/ig, '').replace(/.rt/ig, '') + "');\r\n" +
                             "}\r\n", { encoding: 'utf8' });
 
                                 // JS VERSION 
