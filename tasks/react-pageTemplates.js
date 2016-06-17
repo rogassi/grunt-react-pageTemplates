@@ -89,7 +89,7 @@ module.exports = function register(grunt) {
 
                     var buildIso = false;
 
-                    if (pathInfo.name.indexOf('.rti.html') > -1) {
+                    if (pathInfo.name.indexOf('.rti') > -1) {
                         buildIso = true;
                     }
 
