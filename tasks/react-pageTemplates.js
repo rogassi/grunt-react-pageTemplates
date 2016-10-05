@@ -19,7 +19,7 @@ module.exports = function register(grunt) {
             var tsc = path.join(path.dirname(require.resolve("typescript")), "tsc.js");
             var tscScript = vm.createScript(fs.readFileSync(tsc, "utf8"), tsc);
             var libPath = path.join(path.dirname(require.resolve("typescript")), "lib.d.ts")
-            var tsdPath = path.resolve(__dirname + '/../../../client/typings/tsd.d.ts');
+            var tsdPath = path.resolve(path.resolve() + '/client/typings/tsd.d.ts');
 
             var options = {
                 nodeLib: false,
@@ -93,8 +93,8 @@ module.exports = function register(grunt) {
                         buildIso = true;
                     }
 
-                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '/../../../client/public'), '');
-                    var clientJSFolder = path.resolve(__dirname + '../../../../client/public/js' + folderInfo);
+                    var folderInfo = pathInfo.dir.replace(path.resolve(path.resolve() + '/client/public'), '');
+                    var clientJSFolder = path.resolve(path.resolve() + '/client/public/js' + folderInfo);
 
                     try {
                         var templateContent = grunt.file.read(item, { encoding: 'utf8' });
@@ -169,10 +169,10 @@ module.exports = function register(grunt) {
                     //    buildIso = true;
                     //}
 
-                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '/../../../client/public'), '');
+                    var folderInfo = pathInfo.dir.replace(path.resolve(path.resolve() + '/client/public'), '');
 
-                    var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates/views' + folderInfo);
-                    var routeFolder = path.resolve(__dirname + '../../../../client/keystone/routes/views' + folderInfo);
+                    var templateFolder = path.resolve(path.resolve() + '/client/keystone/templates/views' + folderInfo);
+                    var routeFolder = path.resolve(path.resolve() + '/client/keystone/routes/views' + folderInfo);
                     //var clientJSFolder = path.resolve(__dirname + '../../../../client/public/js' + folderInfo);
 
                     var routeFile = path.resolve(routeFolder + '/' + pathInfo.name.replace(/\.rti/ig, '.ts').replace(/\.rt/ig, '.ts'));
@@ -241,8 +241,8 @@ module.exports = function register(grunt) {
                 }
                 else if (pathInfo.ext == ".tsx") {
 
-                    var folderInfo = pathInfo.dir.replace(path.resolve(__dirname + '/../../../client/public'), '');
-                    var templateFolder = path.resolve(__dirname + '../../../../client/keystone/templates/views' + folderInfo);
+                    var folderInfo = pathInfo.dir.replace(path.resolve(path.resolve() + '/client/public'), '');
+                    var templateFolder = path.resolve(path.resolve() + '/client/keystone/templates/views' + folderInfo);
 
                     try {
                         compileTS(item);
