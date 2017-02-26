@@ -10,7 +10,7 @@
     "url": "https://github.com/rogassi/grunt-react-pageTemplates/issues"
   },
   "dependencies": {
-    "react-templates": "https://github.com/adamrogas/react-templates.git",
+    "react-templates": "https://github.com/adamrogas/react-templates.git#gh-pages",
     "lodash": "^4.13.1"
   },
   "description": "Grunt task for react-templates - that creates scaffolding that allows code behind for server pages  -> write html get valid react code + a callable component",
