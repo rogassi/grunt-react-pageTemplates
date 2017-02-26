@@ -205,7 +205,7 @@ module.exports = function register(grunt) {
                                 grunt.file.write(routeFile,
                                 /// TS VERSION
                             "import * as keystone from 'keystone';\r\n" +
-                            "export default function (req, res) {\r\n" +
+                            "export = function (req, res) {\r\n" +
                             "\r\n" +
                             "    var view = new keystone.View(req, res);\r\n" +
                             "    var locals = res.locals;\r\n" +
