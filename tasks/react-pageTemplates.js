@@ -122,13 +122,14 @@ module.exports = function register(grunt) {
                             "import * as React from 'react';\r\n" +
                             "import * as ReactDOM from 'react-dom';\r\n" +
                             "\r\n" +
-                            "export default class template extends React.Component<{}, {}> {\r\n" +
+                            "class template extends React.Component<{}, {}> {\r\n" +
                             "    constructor(props) {\r\n" +
                             "        super(props);\r\n" +
                             "    }\r\n" +
                     //"    public render() { return _template(); }\r\n" +
                             "}\r\n" +
-                            "template.prototype.render = _template as any;";
+                            "template.prototype.render = _template as any;\r\n" + 
+                            "module.exports = template;";
 
                     if (!grunt.file.exists(scaffoldFile)) {
 
@@ -205,7 +206,7 @@ module.exports = function register(grunt) {
                                 grunt.file.write(routeFile,
                                 /// TS VERSION
                             "import * as keystone from 'keystone';\r\n" +
-                            "export = function (req, res) {\r\n" +
+                            "module.exports = function (req, res) {\r\n" +
                             "\r\n" +
                             "    var view = new keystone.View(req, res);\r\n" +
                             "    var locals = res.locals;\r\n" +
