@@ -69,7 +69,9 @@ module.exports = function register(grunt) {
                     module: module,
                     Buffer: Buffer,
                     setTimeout: setTimeout,
-                    clearTimeout: clearTimeout
+                    clearTimeout: clearTimeout,
+                    __filename: __filename,
+                    __dirname: __dirname,
                 };
 
                 tscScript.runInNewContext(sandbox);
