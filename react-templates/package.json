@@ -1,56 +1,5 @@
 {
-  "_args": [
-    [
-      {
-        "name": "react-templates",
-        "raw": "react-templates",
-        "rawSpec": "",
-        "scope": null,
-        "spec": "latest",
-        "type": "tag"
-      },
-      "F:\\cisive working code\\apps\\ns8-www"
-    ]
-  ],
-  "_from": "react-templates@latest",
-  "_id": "react-templates@0.6.1",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/react-templates",
-  "_nodeVersion": "6.9.2",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/react-templates-0.6.1.tgz_1483533554430_0.63781499536708"
-  },
-  "_npmUser": {
-    "email": "sir_simon_x@yahoo.com",
-    "name": "idok"
-  },
-  "_npmVersion": "3.10.9",
-  "_phantomChildren": {
-    "fs.realpath": "1.0.0",
-    "inflight": "1.0.6",
-    "inherits": "2.0.3",
-    "minimatch": "3.0.3",
-    "once": "1.4.0",
-    "path-is-absolute": "1.0.1"
-  },
-  "_requested": {
-    "name": "react-templates",
-    "raw": "react-templates",
-    "rawSpec": "",
-    "scope": null,
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/react-templates/-/react-templates-0.6.1.tgz",
-  "_shasum": "a91bfb97cf85847ed5252d00623436e4135cc166",
-  "_shrinkwrap": null,
-  "_spec": "react-templates",
-  "_where": "F:\\cisive working code\\apps\\ns8-www",
+  
   "author": {
     "name": "Avi Marcus"
   },
@@ -102,22 +51,6 @@
     "tape": "4.6.3",
     "webpack": "1.14.0"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "a91bfb97cf85847ed5252d00623436e4135cc166",
-    "tarball": "https://registry.npmjs.org/react-templates/-/react-templates-0.6.1.tgz"
-  },
-  "gitHead": "696aa2b4be448649361f8e27e7456c6c04dfa3df",
-  "homepage": "https://github.com/wix/react-templates",
-  "keywords": [
-    "templates",
-    "react-templates",
-    "react",
-    "reactjs",
-    "react.js",
-    "react-component",
-    "react component"
-  ],
   "license": "MIT",
   "main": "./dist/cli.js",
   "maintainers": [
@@ -137,22 +70,8 @@
   "name": "react-templates",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/wix/react-templates.git"
-  },
   "scripts": {
-    "all": "npm run lint && npm run test",
-    "babel": "rm -rf dist && babel src/ --out-dir dist",
-    "build": "npm run lint && npm run test",
-    "buildwp": "webpack --config webpack-production.config.js --progress --profile --colors",
-    "lint": "eslint .",
-    "major": "npm version major -m\"update version to %s\" && git push && git push --tags",
-    "minor": "npm version minor -m\"update version to %s\" && git push && git push --tags",
-    "patch": "npm version patch -m\"update version to %s\" && git push && git push --tags",
-    "prepublish": "npm run babel",
-    "test": "babel-node test/src/test.js",
-    "test-cov": "istanbul cover test/src/test.js -- --require test/support/env --reporter dot --check-leaks test/ test/acceptance/"
+    
   },
   "version": "0.6.1"
 }
