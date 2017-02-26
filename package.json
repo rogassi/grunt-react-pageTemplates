@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "react-templates": "https://github.com/adamrogas/react-templates.git#gh-pages"
+    "react-templates": "^0.6.1"
   },
   "description": "Grunt task for react-templates - that creates scaffolding that allows code behind for server pages  -> write html get valid react code + a callable component",
   "devDependencies": {},
