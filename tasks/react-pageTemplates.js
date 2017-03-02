@@ -117,7 +117,7 @@ module.exports = function register(grunt) {
                     var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
                     var clientScaffoldFile = path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
 
-                    var sf = "import * as _template from './" + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + "';\r\n" +
+                    var sf = "import _template =  require('./" + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + "');\r\n" +
         "import * as _ from 'lodash';\r\n" +
                             "import * as React from 'react';\r\n" +
                             "import * as ReactDOM from 'react-dom';\r\n" +
@@ -129,7 +129,7 @@ module.exports = function register(grunt) {
                     //"    public render() { return _template(); }\r\n" +
                             "}\r\n" +
                             "template.prototype.render = _template as any;\r\n" + 
-                            "module.exports = template;";
+                            "export = template;";
 
                     if (!grunt.file.exists(scaffoldFile)) {
 
