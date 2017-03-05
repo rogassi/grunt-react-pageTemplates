@@ -40,16 +40,16 @@ module.exports = function register(grunt) {
                 var exitCode = 0;
 
                 var argv = [
-                  "node",
-                  "tsc.js",
-                  "--nolib",
-                  "--target",
-                  options.targetES5 ? "ES5" : "ES3", !!options.moduleKind ? "--module" : "", !!options.moduleKind ? options.moduleKind : "",
-                  "--jsx",
-                  "react",
-                  libPath,
-                  tsdPath,
-                  fileName
+                    "node",
+                    "tsc.js",
+                    "--nolib",
+                    "--target",
+                    options.targetES5 ? "ES5" : "ES3", !!options.moduleKind ? "--module" : "", !!options.moduleKind ? options.moduleKind : "",
+                    "--jsx",
+                    "react",
+                    libPath,
+                    tsdPath,
+                    fileName
                 ];
 
                 var proc = merge(merge({}, process), {
@@ -117,19 +117,19 @@ module.exports = function register(grunt) {
                     var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
                     var clientScaffoldFile = path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
 
-                    var sf = "import _template =  require('./" + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + "');\r\n" +
-        "import * as _ from 'lodash';\r\n" +
-                            "import * as React from 'react';\r\n" +
-                            "import * as ReactDOM from 'react-dom';\r\n" +
-                            "\r\n" +
-                            "class template extends React.Component<{}, {}> {\r\n" +
-                            "    constructor(props) {\r\n" +
-                            "        super(props);\r\n" +
-                            "    }\r\n" +
-                    //"    public render() { return _template(); }\r\n" +
-                            "}\r\n" +
-                            "template.prototype.render = _template as any;\r\n" + 
-                            "export = template;";
+                    var sf = "import _template = require('./" + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + "');\r\n" +
+                        "import * as _ from 'lodash';\r\n" +
+                        "import * as React from 'react';\r\n" +
+                        "import * as ReactDOM from 'react-dom';\r\n" +
+                        "\r\n" +
+                        "class template extends React.Component<{}, {}> {\r\n" +
+                        "    constructor(props) {\r\n" +
+                        "        super(props);\r\n" +
+                        "    }\r\n" +
+                        //"    public render() { return _template(); }\r\n" +
+                        "}\r\n" +
+                        "template.prototype.render = _template as any;\r\n" +
+                        "export = template;";
 
                     if (!grunt.file.exists(scaffoldFile)) {
 
@@ -186,38 +186,37 @@ module.exports = function register(grunt) {
                         compileTS(scaffoldFile);
                         grunt.log.ok("Scaffold File Compiled: " + scaffoldFile);
 
-                        if (generateKeystoneRoutes) {
+                    }
+                    catch (scaffoldError) {
+                        grunt.log.error("Scaffold File Error: " + scaffoldFile + "\r\n");
+                        grunt.log.errorlns(scaffoldError.message);
+                    }
+
+
+                    if (generateKeystoneRoutes) {
+                        try {
 
                             grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '.js').replace(/\.rt/ig, '.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/\.rti/ig, '.js').replace(/\.rt/ig, '.js')), {});
 
                             grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '-rt.js').replace(/\.rt/ig, '-rt.js')), path.resolve(templateFolder + '/' + pathInfo.name.replace(/\.rti/ig, '-rt.js').replace(/\.rt/ig, '-rt.js')), {});
 
-                            //if (buildIso) {
-
-                            //    //grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rti/ig, '.js')), path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/.rti/ig, '.js')), {});
-
-                            //    /// COPY THE TEMPLATE TO THE JS DIRECTORY
-                            //    ///grunt.file.copy(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/.rti/ig, '-rt.js')), path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/.rti/ig, '-rt.js')), {});
-
-                            //}
-
                             if (!grunt.file.exists(routeFile)) {
 
                                 grunt.file.write(routeFile,
-                                /// TS VERSION
-                            "import * as keystone from 'keystone';\r\n" +
-                            "module.exports = function (req, res) {\r\n" +
-                            "\r\n" +
-                            "    var view = new keystone.View(req, res);\r\n" +
-                            "    var locals = res.locals;\r\n" +
-                            "    locals.req = req;\r\n" +
-                            "    locals.res = res;\r\n" +
-                            "\r\n" +
-                            "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "';\r\n" +
-                            "\r\n" +
-                            "    // Render the view\r\n" +
-                            "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "');\r\n" +
-                            "}\r\n", { encoding: 'utf8' });
+                                    /// TS VERSION
+                                    "import * as keystone from 'keystone';\r\n" +
+                                    "module.exports = function (req, res) {\r\n" +
+                                    "\r\n" +
+                                    "    var view = new keystone.View(req, res);\r\n" +
+                                    "    var locals = res.locals;\r\n" +
+                                    "    locals.req = req;\r\n" +
+                                    "    locals.res = res;\r\n" +
+                                    "\r\n" +
+                                    "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "';\r\n" +
+                                    "\r\n" +
+                                    "    // Render the view\r\n" +
+                                    "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "');\r\n" +
+                                    "}\r\n", { encoding: 'utf8' });
 
                                 // JS VERSION 
                                 //"var keystone = require('keystone');\r\n" +
@@ -236,11 +235,13 @@ module.exports = function register(grunt) {
                             compileTS(routeFile);
 
                         }
+                        catch (routeError) {
+                            grunt.log.error("Route File Error: " + routeFile + "\r\n");
+                            grunt.log.errorlns(routeError.message);
+                        }
+
                     }
-                    catch (scaffoldError) {
-                        grunt.log.error("Scaffold File Error: " + scaffoldFile + "\r\n");
-                        grunt.log.errorlns(scaffoldError.message);
-                    }
+
                 }
                 else if (pathInfo.ext == ".tsx") {
 
