@@ -11,9 +11,15 @@ module.exports = function register(grunt) {
             var path = require('path');
 
             var generateKeystoneRoutes = false;
+            var convertTemplates = true;
+            var inlineCompile = false;
 
             if (rtOptions.generateKeystoneRoutes != null && rtOptions.generateKeystoneRoutes) {
                 generateKeystoneRoutes = true;
+            }
+
+            if (rtOptions.convertTemplates != null && !rtOptions.convertTemplates) {
+                convertTemplates = false;
             }
 
             var tsc = path.join(path.dirname(require.resolve("typescript")), "tsc.js");
@@ -100,19 +106,26 @@ module.exports = function register(grunt) {
                     var clientJSFolder = path.resolve(path.resolve() + '/client/public/js' + folderInfo);
 
                     try {
-                        var templateContent = grunt.file.read(item, { encoding: 'utf8' });
-                        var tsTemplate = rt.convertTemplateToReact(templateContent, { modules: 'typescript' })
-                        grunt.log.ok("React Template Converted: " + item);
+                        if (convertTemplates) {
+                            var templateContent = grunt.file.read(item, { encoding: 'utf8' });
+                            var tsTemplate = rt.convertTemplateToReact(templateContent, { modules: 'typescript' })
+                            grunt.log.ok("React Template Converted: " + item);
+                        }
+                        else {
+                            grunt.log.ok("React Template Deployed: " + item);
+                        }
                     } catch (templateError) {
                         grunt.log.error("React Template Conversion Error: " + scaffoldFile + "\r\n");
                         grunt.log.errorlns(templateError.message);
                         return
                     }
 
-                    grunt.file.write(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + '.ts'), tsTemplate, { encoding: 'utf8' });
+                    if (convertTemplates) {
+                        grunt.file.write(path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + '.ts'), tsTemplate, { encoding: 'utf8' });
 
-                    if (buildIso)
-                        grunt.file.write(path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + '.ts'), tsTemplate, { encoding: 'utf8' });
+                        if (buildIso)
+                            grunt.file.write(path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/\.rti/ig, '-rt').replace(/\.rt/ig, '-rt') + '.ts'), tsTemplate, { encoding: 'utf8' });
+                    }
 
                     var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
                     var clientScaffoldFile = path.resolve(clientJSFolder + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
@@ -183,9 +196,10 @@ module.exports = function register(grunt) {
                     var scaffoldFile = path.resolve(pathInfo.dir + '/' + pathInfo.name.replace(/\.rti/ig, '.tsx').replace(/\.rt/ig, '.tsx'));
 
                     try {
-                        compileTS(scaffoldFile);
-                        grunt.log.ok("Scaffold File Compiled: " + scaffoldFile);
-
+                        if (inlineCompile) {
+                            compileTS(scaffoldFile);
+                            grunt.log.ok("Scaffold File Compiled: " + scaffoldFile);
+                        }
                     }
                     catch (scaffoldError) {
                         grunt.log.error("Scaffold File Error: " + scaffoldFile + "\r\n");
@@ -232,7 +246,7 @@ module.exports = function register(grunt) {
 
                             }
 
-                            compileTS(routeFile);
+                            //                            compileTS(routeFile);
 
                         }
                         catch (routeError) {
@@ -249,8 +263,10 @@ module.exports = function register(grunt) {
                     var templateFolder = path.resolve(path.resolve() + '/client/keystone/templates/views' + folderInfo);
 
                     try {
-                        compileTS(item);
-                        grunt.log.ok("Scaffold File Compiled: " + item);
+                        if (inlineCompile) {
+                            compileTS(item);
+                            grunt.log.ok("Scaffold File Compiled: " + item);
+                        }
                     }
                     catch (err) {
                         grunt.log.error("Scaffold File Error: " + scaffoldFile + "\r\n");
@@ -265,8 +281,10 @@ module.exports = function register(grunt) {
                 else if (pathInfo.ext == ".ts") {
 
                     try {
-                        compileTS(item);
-                        grunt.log.ok("TS File Built: " + item);
+                        if (inlineCompile) {
+                            compileTS(item);
+                            grunt.log.ok("TS File Built: " + item);
+                        }
                     }
                     catch (err) {
                         grunt.log.error("TS File Error: " + scaffoldFile + "\r\n");
