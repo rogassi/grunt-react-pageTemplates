@@ -234,10 +234,10 @@ module.exports = function register(grunt) {
                                         "    locals.req = req;\r\n" +
                                         "    locals.res = res;\r\n" +
                                         "\r\n" +
-                                        "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "';\r\n" +
+                                        "    locals.section = '" + (folderInfo == "" ? "" : folderInfo.substr(1).replace(/\\/ig,'/') + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "';\r\n" +
                                         "\r\n" +
                                         "    // Render the view\r\n" +
-                                        "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1) + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "');\r\n" +
+                                        "    view.render('" + (folderInfo == "" ? "" : folderInfo.substr(1).replace(/\\/ig,'/') + "/") + pathInfo.name.replace(/\.rti/ig, '').replace(/\.rt/ig, '') + "');\r\n" +
                                         "}\r\n", { encoding: 'utf8' });
 
                                     // JS VERSION 
